@@ -31,6 +31,7 @@ document_types:
   - person
   - personal_information_charter
   - placeholder_ministerial_role
+  - placeholder
   - placeholder_person
   - placeholder_policy_area
   - placeholder_topical_event
