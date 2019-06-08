@@ -1,0 +1,76 @@
+{
+  "node": {
+    "diameter": "50px",
+    "color": "#A5ABB6",
+    "border-color": "#9AA1AC",
+    "border-width": "2px",
+    "text-color-internal": "#FFFFFF",
+    "font-size": "12px"
+  },
+  "relationship": {
+    "color": "#A5ABB6",
+    "shaft-width": "3px",
+    "font-size": "8px",
+    "padding": "3px",
+    "text-color-external": "#000000",
+    "text-color-internal": "#FFFFFF",
+    "caption": "<type>"
+  },
+  "node.*": {
+    "color": "#68BDF6",
+    "border-color": "#5CA8DB",
+    "text-color-internal": "#FFFFFF",
+    "defaultCaption": "<id>"
+  },
+  "node.Organisation": {
+    "color": "#005EA5",
+    "border-color": "#005EA5",
+    "text-color-internal": "#FFFFFF",
+    "caption": "{name}",
+    "diameter": "130px",
+    "font-size": "15px",
+    "caption": "{name}"
+  },
+  "node.Cid": {
+    "color": "#912B88",
+    "border-color": "#912B88",
+    "text-color-internal": "#FFFFFF",
+    "caption": "{name}"
+  },
+  "relationship.HAS_CHILD": {
+    "shaft-width": "1px",
+    "color": "#F499BE",
+    "border-color": "#F499BE",
+    "text-color-internal": "#FFFFFF"
+  },
+  "relationship.HAS_SUPERSEDED": {
+    "shaft-width": "1px",
+    "color": "#F499BE",
+    "border-color": "#F499BE",
+    "text-color-internal": "#FFFFFF"
+  },
+  "relationship.HAS_ORGANISATIONS": {
+    "color": "#2E358B",
+    "border-color": "#2E358B",
+    "text-color-internal": "#FFFFFF",
+    "shaft-width": "1px"
+  },
+  "relationship.HAS_ORIGINAL_PRIMARY_PUBLISHING_ORGANISATION": {
+    "color": "#2E358B",
+    "border-color": "#2E358B",
+    "text-color-internal": "#FFFFFF",
+    "shaft-width": "1px"
+  },
+  "relationship.HAS_PRIMARY_PUBLISHING_ORGANISATION": {
+    "color": "#2E358B",
+    "border-color": "#2E358B",
+    "text-color-internal": "#FFFFFF",
+    "shaft-width": "1px"
+  },
+  "relationship.HAS_SUPPORTING_ORGANISATIONS": {
+    "color": "#2E358B",
+    "border-color": "#2E358B",
+    "text-color-internal": "#FFFFFF",
+    "shaft-width": "1px"
+  }
+}
