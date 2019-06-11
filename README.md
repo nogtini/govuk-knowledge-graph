@@ -52,8 +52,12 @@ you will need to
   
   You then need to reformat the data into csv files for the nodes and edge lists respectively. Do this by running `create_node_edge_list.pynb` from the `notebooks/neo4j` dir.
   
-  This will create a couple of csv that Neo4j will read from. Set up your Neo4j instance using Docker (for a full guide see [here](https://github.com/ukgovdatascience/inno2)) or the desktop version. 
-  Copy the node and edge lists csv (`Org.csv` (Node),`org_has_superseded_org.csv`, `org_has_child_org.csv`, `Cid.csv` (Node), `cid_*_org.csv` (5 cid to org edge list files)) into the [Neo4j import dir](https://neo4j.com/developer/desktop-csv-import/).
+  This will create a couple of csv that Neo4j will read from. The follow the general form of being capitalised if they 
+  are `Nodes.csv`. Edges are of the form `node_has_relationship_node.csv`. 
+  
+  Having set up your Neo4j instance using Docker (for a full guide see [here](https://github.com/ukgovdatascience/inno2)) or the desktop version. 
+  Copy the node and edge lists csv (`Org.csv` (Node),`org_has_superseded_org.csv`, `org_has_child_org.csv`, `Cid.csv` (Node), `cid_*_org.csv` (5 cid to org edge list files)) into the [Neo4j import dir](https://neo4j.com/developer/desktop-csv-import/). 
+  The `cid_suggested_ordered_related_items_cid.csv` is derived from the related links machine learning pipeline and should be added (it only contains the related links for the top 100 pages).  
   
   Load your data into graph database by copying and pasting the Cypher code into the [cypher-shell](https://neo4j.com/docs/operations-manual/current/tools/cypher-shell/) from `src/neo4j/import_edgelist.cypher`. 
   For authentication (depending on whether you used the Docker (check the DockerFile) or desktop app route), the default username and password is typically 'neo4j'. 

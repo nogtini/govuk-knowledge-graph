@@ -26,3 +26,7 @@ max(size( (n)-[]-() ) ) as Max_RelationshipCount;
 MATCH (n:Organisation)-[r:HAS_PRIMARY_PUBLISHING_ORGANISATION]-()
 RETURN n.name, count(DISTINCT r) AS num
 ORDER BY num DESC, n.name;
+
+//What other content and organisations are near to this content?
+MATCH (a:Cid {contentID: '5fa922bc-7631-11e4-a3cb-005056011aef'})-[r*1]-(b)
+RETURN r, a, b;

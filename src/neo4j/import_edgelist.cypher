@@ -73,3 +73,11 @@ LOAD CSV WITH HEADERS FROM "file:///cid_has_supporting_organisations_org.csv" AS
 FIELDTERMINATOR '\t'
 MATCH (cid:Cid { contentID: csvLine.content_id}), (org:Organisation { orgID: csvLine.orgid}) CREATE (cid)-[:HAS_SUPPORTING_ORGANISATIONS]->(org)
 ;
+
+// Create HAS_SUGGESTED_ORDERED_RELATED_ITEMS relationship
+// from Related Links Machine Learning pipeline, node2vec output
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM "file:///cid_has_suggested_ordered_related_items_cid.csv" AS csvLine
+FIELDTERMINATOR '\t'
+MATCH (cid1:Cid { contentID: csvLine.source_content_id}), (cid2:Cid { contentID: csvLine.target_content_id}) CREATE (cid1)-[:HAS_SUGGESTED_ORDERED_RELATED_ITEMS{weight: csvLine.probability}]->(cid2)
+;

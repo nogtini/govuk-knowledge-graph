@@ -72,5 +72,11 @@
     "border-color": "#2E358B",
     "text-color-internal": "#FFFFFF",
     "shaft-width": "1px"
+  },
+  "relationship.HAS_SUGGESTED_ORDERED_RELATED_ITEMS": {
+    "color": "#006435",
+    "border-color": "#006435",
+    "text-color-internal": "#FFFFFF",
+    "shaft-width": "1px"
   }
 }
