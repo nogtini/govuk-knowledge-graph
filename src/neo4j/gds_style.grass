@@ -28,14 +28,21 @@
     "text-color-internal": "#FFFFFF",
     "caption": "{name}",
     "diameter": "130px",
-    "font-size": "15px",
-    "caption": "{name}"
+    "font-size": "15px"
   },
   "node.Cid": {
     "color": "#912B88",
     "border-color": "#912B88",
     "text-color-internal": "#FFFFFF",
     "caption": "{name}"
+  },
+    "node.Taxon": {
+    "color": "#F499BE",
+    "border-color": "#F499BE",
+    "text-color-internal": "#FFFFFF",
+    "caption": "{name}",
+    "diameter": "130px",
+    "font-size": "15px"
   },
   "relationship.HAS_CHILD": {
     "shaft-width": "1px",
@@ -74,6 +81,12 @@
     "shaft-width": "1px"
   },
   "relationship.HAS_SUGGESTED_ORDERED_RELATED_ITEMS": {
+    "color": "#006435",
+    "border-color": "#006435",
+    "text-color-internal": "#FFFFFF",
+    "shaft-width": "1px"
+  },
+  "relationship.IS_TAGGED_TO": {
     "color": "#006435",
     "border-color": "#006435",
     "text-color-internal": "#FFFFFF",
