@@ -96,7 +96,8 @@ you will need to
   You then need to reformat the data into csv files for the nodes and edge lists respectively. Do this by running `create_node_edge_list.pynb` from the `notebooks/neo4j` dir.
   
   This will create a few of csv that Neo4j will read from. The follow the general form of being capitalised if they 
-  are `Nodes.csv`. Edges are of the form `node_has_relationship_node.csv`. 
+  are `Nodes.csv`. Edges are of the form `node_has_relationship_node.csv`. There's one code chunk that takes some time 
+  to run (it rolls up the data, due to a one to many mapping between `content_id` and `base_path`).
   
 ## Create the graph database
 

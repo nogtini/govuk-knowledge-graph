@@ -8,6 +8,8 @@
 CREATE CONSTRAINT ON (o:Organisation) ASSERT o.orgID IS UNIQUE;
 CREATE CONSTRAINT ON (o:Organisation) ASSERT o.name IS UNIQUE;
 CREATE CONSTRAINT ON (c:Cid) ASSERT c.contentID IS UNIQUE;
+CREATE CONSTRAINT ON (t:Taxon) ASSERT t.name IS UNIQUE;
+CREATE CONSTRAINT ON (t:Taxon) ASSERT t.taxonContentID IS UNIQUE;
 
 // Create Organisations
 // from Content Store API
@@ -26,6 +28,15 @@ FIELDTERMINATOR '\t'
 //using variable organisation and label Organisation
 // We don't include text for now.
 CREATE (c:Cid {name: line.base_path, contentID: line.content_id, title: line.title, description: line.description, documentType: line.document_type})
+;
+
+// Create Taxons
+// from Content Store API
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM "file:///Taxon.csv" AS line
+FIELDTERMINATOR '\t'
+// Unlike content and orgs, taxons don't have a canonical unique id; we use their name to index.
+CREATE (t:Taxon {name: line.taxon_title, taxonContentID: line.taxon_content_id, taxonBasePath:line.taxon_base_path})
 ;
 
 // With nodes created and indexed we can create relationships more quickly
@@ -80,4 +91,11 @@ USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS FROM "file:///cid_has_suggested_ordered_related_items_cid.csv" AS csvLine
 FIELDTERMINATOR '\t'
 MATCH (cid1:Cid { contentID: csvLine.source_content_id}), (cid2:Cid { contentID: csvLine.target_content_id}) CREATE (cid1)-[:HAS_SUGGESTED_ORDERED_RELATED_ITEMS{weight: csvLine.probability}]->(cid2)
+;
+
+// Create IS_TAGGED_TO relationship
+// from Content Store API
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM "file:///content_taxon_edgelist.csv" AS csvLine
+MATCH (cid:Cid { contentID: csvLine.content_id}), (t:Taxon { taxonContentID: csvLine.taxon_content_id}) CREATE (cid)-[:IS_TAGGED_TO]->(t)
 ;

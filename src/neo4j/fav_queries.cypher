@@ -30,3 +30,14 @@ ORDER BY num DESC, n.name;
 //What other content and organisations are near to this content?
 MATCH (a:Cid {contentID: '5fa922bc-7631-11e4-a3cb-005056011aef'})-[r*1]-(b)
 RETURN r, a, b;
+
+// What content is tagged to the Transport or Education taxons?
+MATCH (c:Cid)-[:IS_TAGGED_TO]->(t:Taxon)
+WHERE t.name = 'Transport' OR t.name = 'Education'
+RETURN c.name, c.contentID, c.title, c.description, c.documentType
+;
+
+// What content is of a given document type and is tagged to a given taxon?
+MATCH (c:Cid{ documentType: "['step_by_step_nav']"})-[:IS_TAGGED_TO]->(:Taxon{name: 'Education, training and skills'})
+RETURN c.name, c.contentID, c.title, c.description, c.documentType
+;
