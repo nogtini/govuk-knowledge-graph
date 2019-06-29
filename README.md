@@ -96,7 +96,7 @@ you will need to
   You then need to reformat the data into csv files for the nodes and edge lists respectively. Do this by running `create_node_edge_list.pynb` from the `notebooks/neo4j` dir.
   
   This will create a few of csv that Neo4j will read from. The follow the general form of being capitalised if they 
-  are `Nodes.csv`. Edges are of the form `node_has_relationship_node.csv`. There's one code chunk that takes some time 
+  are `Nodes.csv`. Edges are of the form `node_has_relationship_node.csv` (or they have edgelist suffix). There's one code chunk that takes some time 
   to run (it rolls up the data, due to a one to many mapping between `content_id` and `base_path`).
   
 ## Create the graph database
@@ -106,6 +106,8 @@ you will need to
   Having set up your Neo4j instance using Docker (for a full guide see [here](https://github.com/ukgovdatascience/inno2)) or the desktop version. 
   Copy the node and edge lists csv (`Org.csv` (Node),`org_has_superseded_org.csv`, `org_has_child_org.csv`, `Cid.csv` (Node), `cid_*_org.csv` (5 cid to org edge list files)) into the [Neo4j import dir](https://neo4j.com/developer/desktop-csv-import/). 
   The `cid_suggested_ordered_related_items_cid.csv` is derived from the related links machine learning pipeline and should be added (it only contains the related links for the top 100 pages).  
+  
+  There's a whole bunch of others which we won't continue to update here (People and Roles are derived from a current appointments list only, we ignore historical characters for now).
   
   Load your data into graph database by copying and pasting the Cypher code into the [cypher-shell](https://neo4j.com/docs/operations-manual/current/tools/cypher-shell/) from `src/neo4j/import_edgelist.cypher`. 
   For authentication (depending on whether you used the Docker (check the DockerFile) or desktop app route), the default username and password is typically 'neo4j'. 

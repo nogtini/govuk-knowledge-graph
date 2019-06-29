@@ -44,6 +44,16 @@
     "diameter": "130px",
     "font-size": "15px"
   },
+    "node.People": {
+    "color": "#85994B",
+    "border-color": "#85994B",
+    "text-color-internal": "#FFFFFF"
+  },
+    "node.Role": {
+    "color": "#006435",
+    "border-color": "#006435",
+    "text-color-internal": "#FFFFFF"
+  },
   "relationship.HAS_CHILD": {
     "shaft-width": "1px",
     "color": "#F499BE",
@@ -89,6 +99,12 @@
   "relationship.IS_TAGGED_TO": {
     "color": "#006435",
     "border-color": "#006435",
+    "text-color-internal": "#FFFFFF",
+    "shaft-width": "1px"
+  },
+    "relationship.HAS_ROLE": {
+    "color": "#2E358B",
+    "border-color": "#2E358B",
     "text-color-internal": "#FFFFFF",
     "shaft-width": "1px"
   }

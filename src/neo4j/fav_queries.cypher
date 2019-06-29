@@ -41,3 +41,6 @@ RETURN c.name, c.contentID, c.title, c.description, c.documentType
 MATCH (c:Cid{ documentType: "['step_by_step_nav']"})-[:IS_TAGGED_TO]->(:Taxon{name: 'Education, training and skills'})
 RETURN c.name, c.contentID, c.title, c.description, c.documentType
 ;
+
+MATCH (p:People{name: 'Chris Jones'})-[r:HAS_ROLE]-(role:Role) RETURN p, r, role
+ORDER BY r.startDate LIMIT 10;
