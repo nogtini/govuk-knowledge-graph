@@ -129,3 +129,18 @@ USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS FROM "file:///appointment_edgelist.csv" AS csvLine
 MATCH (p:People { contentID: csvLine.content_id}), (role:Role { name: csvLine.appointment}) CREATE (p)-[:HAS_ROLE{startDate: datetime(csvLine.start_date), endDate: datetime(csvLine.end_date)}]->(role)
 ;
+
+// Create HAS_TASK
+// required some pre-processing of Content Store data
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM "file:///task_cid_is_part_of_step_title_edgelist.csv" AS csvLine
+MATCH (s:Step { name: csvLine.step_title}), (cid:Cid { contentID: csvLine.task_cid})
+CREATE (s)-[:HAS_TASK]->(cid)
+;
+
+// Create HAS_STEP
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM "file:///step_title_is_part_of_step_by_step_cid_edgelist.csv" AS csvLine
+MATCH (cid:Cid { contentID: csvLine.content_id}), (step:Step { name: csvLine.step_title})
+CREATE (cid)-[:HAS_STEP{stepNumber: csvLine.step_number}]->(step)
+;

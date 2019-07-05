@@ -44,3 +44,8 @@ RETURN c.name, c.contentID, c.title, c.description, c.documentType
 
 MATCH (p:People{name: 'Chris Jones'})-[r:HAS_ROLE]-(role:Role) RETURN p, r, role
 ORDER BY r.startDate LIMIT 10;
+
+// What steps and tasks are associated with a Step by Step of interest?
+MATCH (c1:Cid{ name: "['/get-childcare']"})-[r:HAS_STEP]->(s:Step)-[:HAS_TASK]->(c2:Cid)
+RETURN c1, s, c2
+;

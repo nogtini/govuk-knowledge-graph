@@ -112,5 +112,17 @@
     "border-color": "#2E358B",
     "text-color-internal": "#FFFFFF",
     "shaft-width": "1px"
+  },
+    "relationship.HAS_TASK": {
+    "color": "#f47738",
+    "border-color": "#f47738",
+    "text-color-internal": "#FFFFFF",
+    "shaft-width": "1px"
+  },
+    "relationship.HAS_STEP": {
+    "color": "#f47738",
+    "border-color": "#f47738",
+    "text-color-internal": "#FFFFFF",
+    "shaft-width": "1px"
   }
 }
