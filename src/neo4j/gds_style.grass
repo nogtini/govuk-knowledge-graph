@@ -54,7 +54,12 @@
     "border-color": "#006435",
     "text-color-internal": "#FFFFFF"
   },
-  "relationship.HAS_CHILD": {
+    "node.Step": {
+    "color": "#f47738",
+    "border-color": "#f47738",
+    "text-color-internal": "#FFFFFF"
+  },
+    "relationship.HAS_CHILD": {
     "shaft-width": "1px",
     "color": "#F499BE",
     "border-color": "#F499BE",

@@ -12,6 +12,7 @@ CREATE CONSTRAINT ON (t:Taxon) ASSERT t.name IS UNIQUE;
 CREATE CONSTRAINT ON (t:Taxon) ASSERT t.taxonContentID IS UNIQUE;
 CREATE CONSTRAINT ON (p:People) ASSERT p.contentID IS UNIQUE;
 CREATE CONSTRAINT ON (role:Role) ASSERT role.name IS UNIQUE;
+CREATE CONSTRAINT ON (s:Step) ASSERT s.name IS UNIQUE;
 
 // Create Organisations
 // from Content Store API
@@ -19,7 +20,6 @@ CREATE CONSTRAINT ON (role:Role) ASSERT role.name IS UNIQUE;
 LOAD CSV WITH HEADERS FROM "file:///Org.csv" AS line
 //using variable organisation and label Organisation
 CREATE (o:Organisation {name: line.title, orgID: line.orgid})
-
 ;
 
 // Create Cids
@@ -53,6 +53,13 @@ USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS FROM "file:///Role.csv" AS line
 FIELDTERMINATOR '\t'
 CREATE (role:Role {name: line.appointment})
+;
+
+// Create Step
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM "file:///step_title_nodelist.csv" AS line
+FIELDTERMINATOR ','
+CREATE (step:Step{name: line.step_title, stepID: line.step_id, stepNumber: line.step_number})
 ;
 
 // With nodes created and indexed we can create relationships more quickly
